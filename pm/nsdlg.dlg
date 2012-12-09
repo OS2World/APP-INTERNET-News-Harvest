@@ -1,0 +1,176 @@
+/***********************************************************************
+
+nsdlg.dlg,v 1.5 2007/04/26 03:07:02 root Exp
+
+Newsharvest main dialog
+
+Copyright (c) 1997, 1999 Pty. Limited
+Copyright (c) 2000, 2001 Steven Levine and Associates, Inc.
+All rights reserved.
+
+22 Jun 01 SHL Switch back to dlgedit
+05 Jan 02 SHL Move hardcoded local here
+28 Oct 05 SHL Update units
+
+***********************************************************************/
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "nsdlg.h"
+
+BITMAP ID_BITMAP    PRELOAD ns_bann.bmp      /* Hardcoded reference #101 below - do not delete */
+
+DLGTEMPLATE DLG_MAIN LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "News Harvest", DLG_MAIN, -20, -69, 379, 227, FS_NOBYTEALIGN | 
+            NOT FS_DLGBORDER | FS_SIZEBORDER | WS_VISIBLE, FCF_SYSMENU | 
+            FCF_TITLEBAR | FCF_MINBUTTON
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+            PRESPARAMS 0x00008000L, 0x532E3031L, 0x65747379L, 0x7250206DL, 
+            0x726F706FL, 0x6E6F6974L, 0x00006C61L
+    BEGIN
+        PUSHBUTTON      "#101", ID_B_ABOUT, 7, 190, 168, 31, 
+                        BS_BITMAP | BS_NOPOINTERFOCUS
+		                  PRESPARAMS PP_BACKGROUNDCOLOR, 0x00000000
+
+        CTEXT           "Copyright (c) KRT 1997-1998", -1, 7, 177, 169, 
+                        8, DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        CTEXT           "Copyright (c) 2000, 2001 SL&A, Inc.", -1, 7, 168, 
+                        169, 8, DT_VCENTER | NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        CONTAINER       ID_CONTAINER, 187, 5, 184, 217, CCS_SINGLESEL | 
+                        CCS_MINIICONS | CCS_AUTOPOSITION | CCS_READONLY | WS_GROUP
+        GROUPBOX        "Server", ID_SERVER_BOX, 6, 119, 172, 49
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Extracted:", -1, 20, 153, 33, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_SERVER_EXTRACT, 63, 153, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           ",", -1, 89, 153, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0.0", ID_SERVER_EXTRACT_MB, 101, 153, 23, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "MiBytes", -1, 130, 153, 24, 8, NOT WS_GROUP
+        LTEXT           "Culled:", -1, 20, 145, 33, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_SERVER_CULL, 63, 145, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           ",", -1, 89, 145, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0.0", ID_SERVER_CULL_MB, 101, 145, 23, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "MiBytes", -1, 130, 145, 24, 8, NOT WS_GROUP
+        RTEXT           "0.0", ID_SERVER_FILTER_MB, 101, 137, 23, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "MiBytes", -1, 130, 137, 24, 8, NOT WS_GROUP
+        LTEXT           "Filtered:", -1, 20, 137, 33, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_SERVER_FILTER, 63, 137, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           ",", -1, 89, 137, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0.0", ID_SERVER_SKIP_MB, 101, 129, 23, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "MiBytes", -1, 130, 129, 24, 8, NOT WS_GROUP
+        LTEXT           "Reposts:", -1, 20, 129, 33, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_SERVER_SKIP, 63, 129, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           ",", -1, 89, 129, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0.0", ID_GROUP_EXTRACT_MB, 101, 99, 23, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "MiBytes", -1, 130, 99, 24, 8, NOT WS_GROUP
+        GROUPBOX        "Group", ID_GROUP_BOX, 6, 67, 172, 51
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Extracted:", -1, 20, 99, 33, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_GROUP_EXTRACT, 63, 99, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           ",", -1, 89, 99, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0.0", ID_GROUP_CULL_MB, 101, 91, 23, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "MiBytes", -1, 130, 91, 24, 8, NOT WS_GROUP
+        LTEXT           "Culled:", -1, 20, 91, 33, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_GROUP_CULL, 63, 91, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           ",", -1, 89, 91, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0.0", ID_GROUP_FILTER_MB, 101, 83, 23, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "MiBytes", -1, 130, 83, 24, 8, NOT WS_GROUP
+        LTEXT           "Filtered:", -1, 20, 83, 33, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_GROUP_FILTER, 63, 83, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           ",", -1, 89, 83, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0.0", ID_GROUP_SKIP_MB, 101, 75, 23, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "MiBytes", -1, 130, 75, 24, 8, NOT WS_GROUP
+        LTEXT           "Reposts:", -1, 20, 75, 33, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_GROUP_SKIP, 63, 75, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           ",", -1, 89, 75, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        GROUPBOX        "Article", ID_ARTICLE_BOX, 5, 26, 172, 40
+        LTEXT           "Lines:", -1, 21, 47, 20, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "0", ID_ARTICLE_LINES, 61, 47, 25, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Extraction:", -1, 21, 31, 34, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0", ID_ARTICLE_PERCENT, 61, 31, 13, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "%", -1, 78, 31, 8, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Subject:", -1, 21, 39, 27, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           " ", ID_ARTICLE_SUBJECT, 61, 39, 114, 8, NOT 
+                        WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "0.0", ID_ARTICLE_KPS, 92, 31, 23, 8, NOT WS_GROUP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "KiBytes/Sec", -1, 118, 31, 48, 8, NOT WS_GROUP
+        DEFPUSHBUTTON   "Go !", ID_B_START, 5, 7, 40, 14
+        PUSHBUTTON      "Finish", ID_B_FINISH, 51, 7, 40, 14
+        PUSHBUTTON      "Config", ID_B_CONFIG, 96, 7, 40, 14
+        PUSHBUTTON      "Help", ID_B_HELP, 138, 7, 40, 14, BS_HELP
+    END
+END

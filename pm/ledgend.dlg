@@ -1,0 +1,28 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "ledgend.h"
+
+DLGTEMPLATE ID_LEDGENDS_DLG PRELOAD MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Many thanks to News Harvest's Alpha & Beta Testers", 
+            ID_LEDGENDS_DLG, 83, 29, 271, 160, WS_VISIBLE, FCF_SYSMENU | 
+            FCF_TITLEBAR
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    BEGIN
+        CONTAINER       ID_LEDGENDS_CONT, 7, 28, 254, 100, CCS_SINGLESEL | 
+                        WS_GROUP
+        PUSHBUTTON      "Dismiss", ID_LEDGENDS_DIS, 217, 7, 45, 14
+        LTEXT           "If I have seen further than others,", -1, 19, 147, 218, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000C8L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "It is because I was standing on the shoulders of giants.", 
+                        -1, 19, 139, 222, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000C8L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        RTEXT           "- Isaac Newton", -1, 19, 131, 218, 8, DT_BOTTOM
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

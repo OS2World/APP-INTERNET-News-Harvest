@@ -1,0 +1,48 @@
+/* multi.dlg,v 1.1 2001/06/20 00:53:14 root Exp */
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "multi.h"
+
+DLGTEMPLATE NBKP_MULTIPART LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Multipart", NBKP_MULTIPART, 0, 7, 269, 164, FS_NOBYTEALIGN | 
+            NOT FS_DLGBORDER
+    BEGIN
+        LTEXT           "Path to store part-articles:", -1, 13, 142, 131, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", PRT_PATH, 15, 132, 230, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "How many days to keep unused parts:", -1, 13, 122, 
+                        191, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", PRT_DAYS, 15, 112, 230, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Ignore parts that have more lines than:", -1, 13, 
+                        82, 191, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", PRT_MAX, 15, 92, 230, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Ignore articles that have more parts than:", -1, 13, 
+                        102, 191, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", PRT_MAX_LINES, 15, 72, 230, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "When parts disk is full:", -1, 13, 56, 228, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTORADIOBUTTON "Stop all downloading", PRT_FULLSTOP, 16, 42, 138, 
+                        10, WS_TABSTOP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTORADIOBUTTON "Disable multipart processing", PRT_FULLDISABLE, 16, 
+                        33, 150, 10, WS_TABSTOP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTORADIOBUTTON "Remove oldest 25% of parts", PRT_FULLCLEAN, 16, 24, 
+                        150, 10, WS_TABSTOP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTOCHECKBOX    "Enable Multipart Processing", PRT_USE, 8, 6, 173, 
+                        10
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

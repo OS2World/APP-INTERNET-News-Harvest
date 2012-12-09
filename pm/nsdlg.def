@@ -1,0 +1,9 @@
+NAME    NSDLG   WINDOWAPI
+
+DESCRIPTION 'Fire & Forget Binary Downloading'
+
+STACKSIZE   65535
+HEAPSIZE    65535
+
+PROTMODE
+

@@ -1,0 +1,318 @@
+/***********************************************************************
+
+nsdlg.rc,v 1.5 2002/07/19 23:47:28 root Exp
+
+Newsharvest resource defintions
+
+Copyright (c) 1997, 1999 Pty. Limited
+Copyright (c) 2000, 2002 Steven Levine and Associates, Inc.
+All rights reserved.
+
+Revisions	22 Jun 01 SHL - Switch back to dlgedit
+            05 Jan 02 SHL - Move local stuff to nsdlg.dlg
+            19 Jul 02 SHL - Use same ID for DLG_MAIN DIALOG and ACCELTABLE
+            19 Jul 02 SHL - Add some HELPTABLES
+
+***********************************************************************/
+
+#define INCL_WINSYS
+#define INCL_WINSTDDLGS
+#define INCL_WINSTDSPIN
+#define INCL_NLS
+#define INCL_SW
+#define INCL_CIRCULARSLIDER  /* need this for the circular slider control */
+
+#include <os2.h>
+
+#include "nsdlg.h"
+#include "icons.h"
+#include "splash.h"
+#include "resource.h"
+#include "help.h"
+
+ICON   ICON_PROG    PRELOAD base.ico
+BITMAP SPLASH_BITMAP PRELOAD splash.bmp
+ICON   ICON_HOST_O  PRELOAD host.ico
+ICON   ICON_HOST_C  PRELOAD host.ico
+ICON   ICON_GROUP_O PRELOAD f_open.ico
+ICON   ICON_GROUP_C PRELOAD f_close.ico
+ICON   ICON_DRAG    PRELOAD drag.ico
+ICON   ICON_PROCESSED PRELOAD processd.ico
+
+ICON   ICON_DUNNO   PRELOAD unknoe.ico
+ICON   ICON_JPEG    PRELOAD jpeg.ico
+ICON   ICON_AVI     PRELOAD avi.ico
+ICON   ICON_BMP     PRELOAD bmp.ico
+ICON   ICON_FLI     PRELOAD fli.ico
+ICON   ICON_GIF     PRELOAD gif.ico
+ICON   ICON_MIDI    PRELOAD midi.ico
+ICON   ICON_MP3     PRELOAD mp3.ico
+ICON   ICON_MPG     PRELOAD mpg.ico
+ICON   ICON_PCX     PRELOAD pcx.ico
+ICON   ICON_TGA     PRELOAD tga.ico
+ICON   ICON_TIF     PRELOAD tif.ico
+ICON   ICON_WAV     PRELOAD wav.ico
+ICON   ICON_AU      PRELOAD au.ico
+ICON   ICON_HTML    PRELOAD html.ico
+ICON   ICON_PNG     PRELOAD png.ico
+ICON   ICON_SUGGEST PRELOAD suggest.ico
+ICON   ICON_SERVER  PRELOAD server.ico
+
+MENU ID_CONTAINER_BASE_MENU
+{
+/*    MENUITEM SEPARATOR */
+    MENUITEM "~Add Host",      IDM_ADDSERVER,      MIS_TEXT
+/*    MENUITEM "~Small Icons",   IDM_MINI_TOGGLE,    MIS_TEXT */
+    MENUITEM "~Mime Types",    IDM_MIME_TYPES,     MIS_TEXT
+}
+
+MENU ID_CONTAINER_BASE_MENU_DEL
+{
+    MENUITEM "~Refresh",       IDM_RESCAN,         MIS_TEXT
+    MENUITEM "S~kip Processing",IDM_SKIP,           MIS_TEXT
+    MENUITEM "~Go To",           IDM_GOTO,           MIS_TEXT
+    MENUITEM "~Open",          IDM_OPEN,           MIS_TEXT
+/*    
+    SUBMENU  "~Open", IDM_OPEN
+    {
+       MENUITEM "~Default",      IDM_OPEN_DEFAULT,   MIS_TEXT
+       MENUITEM "~Icon",         IDM_OPEN_ICON,      MIS_TEXT
+       MENUITEM "~Name",         IDM_OPEN_NAME,      MIS_TEXT
+       MENUITEM "~Text",         IDM_OPEN_TEXT,      MIS_TEXT
+       MENUITEM "D~etail",       IDM_OPEN_DETAIL,    MIS_TEXT
+    }
+*/                 
+    MENUITEM "~Delete",        IDM_DELETE,         MIS_TEXT
+    MENUITEM SEPARATOR
+    MENUITEM "~Add Host",      IDM_ADDSERVER,      MIS_TEXT
+/*    MENUITEM "~Small Icons",   IDM_MINI_TOGGLE,    MIS_TEXT     */
+    MENUITEM "~Mime Types",    IDM_MIME_TYPES,     MIS_TEXT
+}
+
+
+MENU ID_CONTAINER_BASGRP_MENU
+{
+    MENUITEM "Add ~Group",     IDM_ADDGROUP,       MIS_TEXT
+    MENUITEM "~Delete",        IDM_DELETE,         MIS_TEXT
+    MENUITEM SEPARATOR
+    MENUITEM "~Add Host",      IDM_ADDSERVER,      MIS_TEXT
+/*    MENUITEM "~Small Icons",   IDM_MINI_TOGGLE,    MIS_TEXT */
+    MENUITEM "~Mime Types",    IDM_MIME_TYPES,     MIS_TEXT
+}
+
+MENU ID_CONTAINER_PLAIN_MENU
+{
+    MENUITEM "~Delete",        IDM_DELETE,         MIS_TEXT
+    MENUITEM SEPARATOR
+    MENUITEM "~Add Host",      IDM_ADDSERVER,      MIS_TEXT
+/*    MENUITEM "~Small Icons",   IDM_MINI_TOGGLE,    MIS_TEXT */
+    MENUITEM "~Mime Types",    IDM_MIME_TYPES,     MIS_TEXT
+}
+
+ACCELTABLE DLG_MAIN PRELOAD
+BEGIN
+    VK_DELETE, IDM_DELETE,       AF_VIRTUALKEY
+    VK_UP,     IDM_UP    ,       AF_VIRTUALKEY | AF_SHIFT
+    VK_DOWN,   IDM_DOWN  ,       AF_VIRTUALKEY | AF_SHIFT
+    VK_F10,    IDM_CONTEXT_MENU, AF_VIRTUALKEY | AF_SHIFT
+    VK_F12,    IDM_LOG,          AF_VIRTUALKEY | AF_SHIFT
+END
+                
+
+/*
+ *  Help table definitions
+ */
+
+#define SUBTABLE_MAIN DLG_MAIN
+#define SUBTABLE_CONFIG DLG_NOTEBOOK
+
+HELPTABLE   HELP_TABLE
+{
+    HELPITEM    DLG_MAIN,      SUBTABLE_MAIN,         HELP_MAINPANEL
+    HELPITEM    DLG_NOTEBOOK,  SUBTABLE_CONFIG,       HELP_CONFIG
+}
+
+
+/*
+ *  Main dialog subtable, includes menu item help
+ */
+HELPSUBTABLE SUBTABLE_MAIN
+{
+}
+
+HELPSUBTABLE SUBTABLE_CONFIG
+{
+}
+
+/*
+ * Notebook pages - move me someday to .dlg
+ */
+
+DLGTEMPLATE DLG_NOTEBOOK 850 MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG "News Harvest Configuration", DLG_NOTEBOOK, 140, -186, 314, 222,
+                FS_NOBYTEALIGN | FS_DLGBORDER | WS_CLIPSIBLINGS | WS_SAVEBITS |
+                WS_VISIBLE, FCF_TITLEBAR | FCF_SYSMENU | FCF_HIDEBUTTON
+    PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+    BEGIN
+        CONTROL "",                    NBK_NOTEBOOK, 3, 19, 310, 200,
+                                            WC_NOTEBOOK, BKS_BACKPAGESBR |
+                                            BKS_MAJORTABRIGHT | BKS_ROUNDEDTABS |
+                                            BKS_STATUSTEXTLEFT |
+                                            BKS_TABTEXTLEFT | BKS_SPIRALBIND | 0x800 | 
+                                            WS_TABSTOP | WS_VISIBLE
+//        CONTROL "~Undo",               PB_UNDO, 75, 5, 38, 12, WC_BUTTON,
+//                                            BS_PUSHBUTTON | WS_TABSTOP |
+//                                            WS_VISIBLE
+//                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "~Default",            PB_DEFAULT, 120, 5, 38, 12, WC_BUTTON,
+                                            BS_PUSHBUTTON | WS_TABSTOP |
+                                            WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+        CONTROL "~Help",               PB_HELP, 165, 5, 38, 12, WC_BUTTON,
+                                            BS_PUSHBUTTON | BS_HELP |
+                                            WS_TABSTOP | WS_VISIBLE
+                PRESPARAMS PP_FONTNAMESIZE, "9.WarpSans"
+    END
+END
+
+DLGTEMPLATE NBKP_NOTEBOOK1 850
+BEGIN
+    DIALOG "Registration", NBKP_NOTEBOOK1, 0, 0, 262, 142,
+                FS_NOBYTEALIGN | NOT FS_DLGBORDER
+    BEGIN
+
+            LTEXT           "Registered To:", -1, 8, 107, 70, 8
+                PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+            ENTRYFIELD      "", REG_NAME, 10, 96, 230, 8, ES_MARGIN | ES_READONLY
+                PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+            LTEXT           "Key Code:", -1, 8, 74, 70, 8
+                PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+            ENTRYFIELD      "", REG_CODE, 10, 63, 230, 8, ES_MARGIN | ES_READONLY
+                PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+            
+    END
+END
+
+
+DLGTEMPLATE NBKP_NOTEBOOK4 850
+BEGIN
+    DIALOG "Output Files", NBKP_NOTEBOOK4, 0, 0, 262, 142,
+                FS_NOBYTEALIGN | NOT FS_DLGBORDER
+    BEGIN
+        LTEXT           "Path to store binaries:", -1, 8, 106, 131, 8
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", OUT_PATH, 10, 96, 230, 8, ES_MARGIN 
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Stop after downloading:", -1, 8, 81, 191, 8
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", OUT_MB, 10, 71, 50, 8, ES_MARGIN 
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Megabytes    (0 = full disk)", -1, 70, 71, 90, 8
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+/*
+        ENTRYFIELD      "", OUT_MB, 10, 71, 135, 8, ES_MARGIN 
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Megabytes (0 for no stop)", -1, 155, 71, 76, 8
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+*/            
+    END
+END
+
+
+DLGTEMPLATE NBKP_NOTEBOOK5 850
+BEGIN
+    DIALOG "Logging", NBKP_NOTEBOOK5, 0, 0, 262, 142,
+                FS_NOBYTEALIGN | NOT FS_DLGBORDER
+    BEGIN
+        LTEXT           "Path to store logfile:", -1, 8, 106, 131, 8
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "",              LOG_PATH, 10, 96, 230, 8, ES_MARGIN 
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTOCHECKBOX    "Enable Logging", LOG_USE,  8, 79, 77, 10
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTOCHECKBOX    "Log File-Open Spawns", LOG_SPAWN,  8, 66, 97, 10
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END
+
+DLGTEMPLATE NBKP_NOTEBOOK7 850
+BEGIN
+    DIALOG "Post Processing", NBKP_NOTEBOOK7, 0, 0, 262, 142,
+        FS_NOBYTEALIGN | NOT FS_DLGBORDER
+    BEGIN
+        LTEXT           "Post Processing Command:", -1, 8, 106, 131, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", POST_COMM, 10, 96, 230, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTOCHECKBOX    "Enable Post Download Processing", POST_USE, 8, 79, 173, 10
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END
+
+DLGTEMPLATE NBKP_NOTEBOOK8 850
+BEGIN
+    DIALOG  "User Interface", NBKP_NOTEBOOK7, 0, 0, 262, 142,
+        FS_NOBYTEALIGN | NOT FS_DLGBORDER
+    BEGIN
+
+
+        AUTOCHECKBOX    "Run in Unattended Mode", USER_AUTO, 13, 117, 
+                        167, 10
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTORADIOBUTTON "Show New Files", USER_SMALLTREE, 38, 90, 113, 10, 
+                        WS_TABSTOP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTORADIOBUTTON "Show All Files", USER_BIGTREE, 38, 80, 113, 10, 
+                        WS_TABSTOP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTOCHECKBOX    "Use Small Icons", USER_ICONS, 38, 70, 158, 10
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", USER_LOOP, 49, 36, 32, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Loop", -1, 19, 34, 26, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "times before finishing", -1, 87, 34, 128, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Wait", -1, 19, 21, 26, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", USER_WAIT, 49, 23, 32, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "seconds between each loop", -1, 87, 21, 128, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        GROUPBOX        "Restarting:", -1, 10, 17, 223, 40
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        GROUPBOX        "Display of Harvested Files:", -1, 11, 63, 223, 47
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END
+
+DLGTEMPLATE NBKP_NOTEBOOK9 850
+BEGIN
+    DIALOG "Socks Server", NBKP_NOTEBOOK9, 0, 0, 262, 142,
+        FS_NOBYTEALIGN | NOT FS_DLGBORDER
+    BEGIN
+        LTEXT           "SOCKS_SERVER Address:", -1, 8, 106, 131, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", SOCKS_ADDRESS, 10, 96, 230, 8, ES_MARGIN | ES_READONLY
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+/*        AUTOCHECKBOX    "Use Socks", SOCKS_USE, 8, 79, 173, 10
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv" */
+    END
+END
+
+
+rcinclude nsdlg.dlg
+rcinclude newhost.dlg
+rcinclude newgroup.dlg
+rcinclude hostlist.dlg
+rcinclude mime.dlg
+rcinclude ledgend.dlg
+rcinclude unreg_splash.dlg
+rcinclude splash.dlg
+
+/* Settings notebook */
+
+rcinclude filter.dlg
+rcinclude multi.dlg
+rcinclude priority.dlg

@@ -1,0 +1,38 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "splash.h"
+
+
+DLGTEMPLATE SPLASH_DIALOG PRELOAD MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Welcome", SPLASH_DIALOG, 95, 48, 196, 136, WS_VISIBLE, FCF_SYSMENU | 
+            FCF_TITLEBAR
+    BEGIN
+        PUSHBUTTON      "#32003", SPLASH_BUTTON, 3, 51, 189, 81, BS_BITMAP | BS_NOPOINTERFOCUS | NOT WS_TABSTOP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_BACKGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_HILITEFOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_HILITEBACKGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_DISABLEDFOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_DISABLEDBACKGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_BORDERCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Owner:", -1, 5, 36, 30, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000C8L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Key:", -1, 5, 26, 30, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x000000C8L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Dismiss", SPLASH_DISMISS, 75, 4, 40, 14
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "(Unregistered)", SPLASH_OWNER, 43, 36, 146, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "(none)", SPLASH_KEY, 43, 26, 146, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

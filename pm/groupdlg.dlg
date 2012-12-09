@@ -1,0 +1,35 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "groupdlg.h"
+
+DLGTEMPLATE ID_GROUP_DIALOG PRELOAD MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Group Selection", ID_GROUP_DIALOG, 17, 9, 290, 185, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+        LISTBOX         101, 9, 50, 100, 120, LS_MULTIPLESEL
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", 102, 11, 28, 96, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Available News Groups:", -1, 9, 172, 100, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Filter Key:", -1, 9, 38, 100, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Add >", 103, 117, 102, 53, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "< Remove", 104, 117, 86, 53, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Groups to Process:", -1, 177, 172, 100, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Ok", DID_OK, 191, 6, 40, 14
+        PUSHBUTTON      "Cancel", DID_CANCEL, 237, 6, 40, 14
+        PUSHBUTTON      "Refresh", 106, 9, 6, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Filter", 107, 55, 6, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LISTBOX         7001, 177, 26, 100, 144, LS_MULTIPLESEL
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

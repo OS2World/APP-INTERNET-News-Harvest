@@ -1,0 +1,35 @@
+/* filter.dlg,v 1.1 2001/06/20 00:53:13 root Exp */
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "filter.h"
+
+DLGTEMPLATE NBKP_FILTERS LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Filtering", NBKP_FILTERS, 0, 0, 291, 156, FS_NOBYTEALIGN | 
+            NOT FS_DLGBORDER
+    BEGIN
+        LISTBOX         FIL_LIST, 7, 21, 274, 85, LS_MULTIPLESEL | 
+                        LS_EXTENDEDSEL
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", FIL_FILENAME, 9, 136, 272, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Add", FIL_ADD, 243, 110, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Remove", FIL_DEL, 244, 3, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Filter File:", -1, 7, 146, 62, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", FIL_ENTRY, 9, 113, 223, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Filters:", -1, 7, 123, 46, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTOCHECKBOX    "Enable Filtering", FIL_USE, 8, 6, 68, 10
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        AUTOCHECKBOX    "Fast Filename Filter", FIL_FAST_NAME_USE, 76, 6, 68, 
+                        10
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

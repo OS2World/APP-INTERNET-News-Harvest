@@ -1,0 +1,44 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "mime.h"
+
+DLGTEMPLATE MIME_DLG PRELOAD MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "MIME Types", MIME_DLG, 13, 34, 321, 169, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    BEGIN
+        CONTAINER       MIME_CONT, 7, 70, 304, 93, CCS_SINGLESEL | 
+                        CCS_READONLY | WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Type:", -1, 9, 53, 46, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Extensions:", -1, 9, 41, 48, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Command:", -1, 9, 29, 42, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "", MIME_NAME, 67, 53, 242, 8, 
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "", MIME_EXT, 67, 41, 242, 8, 
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+/*
+        ENTRYFIELD      "", MIME_NAME, 67, 53, 242, 8, ES_MARGIN | 
+                        ES_READONLY | NOT WS_TABSTOP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", MIME_EXT, 67, 41, 242, 8, ES_MARGIN
+                        ES_READONLY | NOT WS_TABSTOP
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+*/                        
+        ENTRYFIELD      "", MIME_EXE, 67, 29, 242, 8, ES_MARGIN
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Ok", DID_OK, 223, 4, 40, 14
+        PUSHBUTTON      "Cancel", DID_CANCEL, 271, 4, 40, 14
+    END
+END

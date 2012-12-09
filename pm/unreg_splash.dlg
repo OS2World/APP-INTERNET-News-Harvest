@@ -1,0 +1,50 @@
+
+/***********************************************************************
+
+unreg_splash.dlg,v 1.3 2002/01/05 19:28:19 root Exp
+
+Unregistered user splash screen dialog
+
+Copyright (c) 1997, 1999 Pty. Limited
+Copyright (c) 2000, 2001 Steven Levine and Associates, Inc.
+All rights reserved.
+
+Revisions	22 Jun 01 SHL - Update version
+
+***********************************************************************/
+
+
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "splash.h"
+#ifndef SLAINC // 02 Aug 00 SHL
+#include "version.h"
+#endif
+
+DLGTEMPLATE SPLASH_DIALOG_UREG LOADONCALL MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Welcome", SPLASH_DIALOG_UREG, 12, 6, 308, 163, WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+    BEGIN
+    
+        ICON            ICON_PROG, -1, 18, 129, 27, 20, WS_GROUP
+#ifndef SLAINC // 02 Aug 00 SHL - VAC dlgedit is dumb 
+        LTEXT           "News Harvest" VERSION, SPLASH_HEADING, 79, 130, 213, 19
+                        PRESPARAMS PP_FONTNAMESIZE, "24.Helv"
+#else
+        LTEXT           "News Harvest 1.5", SPLASH_HEADING, 79, 130, 213, 19
+                        PRESPARAMS PP_FONTNAMESIZE, "24.Helv"
+#endif
+        CONTROL         "", -1, 18, 124, 274, 1, WC_STATIC, SS_FGNDFRAME | 
+                        WS_GROUP | WS_VISIBLE
+        MLE             "Thanks for evaluating News Harvest!\n\n",
+                        SPLASH_MLE, 17, 34, 276, 81, 
+                        MLS_READONLY | MLS_WORDWRAP | MLS_VSCROLL | WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        DEFPUSHBUTTON   "Register", SPLASH_BUTTON, 107, 10, 46, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Dismiss", SPLASH_DISMISS, 159, 10, 46, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

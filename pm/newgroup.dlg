@@ -1,0 +1,34 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "newgroup.h"
+
+DLGTEMPLATE NEW_GROUP_DIALOG PRELOAD MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Group Configuration", NEW_GROUP_DIALOG, 46, 94, 320, 68, WS_VISIBLE, 
+            FCF_SYSMENU | FCF_TITLEBAR
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    BEGIN
+        ENTRYFIELD      "", NEW_GROUP_ENTRY, 12, 45, 248, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", NEW_GROUP_CULL, 57, 25, 32, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", NEW_GROUP_NEXT, 57, 9, 32, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        DEFPUSHBUTTON   "Ok", DID_OK, 224, 5, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Cancel", DID_CANCEL, 272, 5, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "List", NEW_GROUP_B_LIST, 272, 42, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Cull Size:", 103, 9, 23, 30, 9
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Next Article:", -1, 9, 7, 39, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "k bytes", -1, 97, 23, 33, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Group:", 106, 9, 55, 22, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

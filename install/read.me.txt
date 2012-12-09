@@ -1,0 +1,119 @@
+
+                            News Harvest v1.4o, BUILD 1
+                           -----------------------------
+                                      Read.me
+
+Welcome to News Harvest.
+
+This file contains information you need to install News Harvest v1.4o,
+
+
+This README file is divided into the following categories:
+   -  Before You Install News Harvest
+       -Software Licence
+       -Software Requirements
+       -Hardware Requirements
+   -  Installing News Harvest
+   -  Getting Help
+   -  Trademarks
+   -  Customer Satisfaction
+
+
+Before You Install or Run News Harvest v1.4.o
+---------------------------------------------
+
+   Software Licence
+   ----------------
+   News Harvest Copyright (C) 1997,1998 KRT Pty. Ltd.  All Rights Reserved
+   News Harvest Copyright (C) 1997,1998 Kingsley R. Turner  All Rights Reserved
+   
+   Use of this software by any person or organisation for any purpose
+   requires that a usage licence be obtained by that person or organisation.
+   
+   Commercial redistribution of this software, by itself or as part of
+   another application is allowed only under express written permission of
+   KRT Pty. Ltd.
+   
+   KINGSLEY R. TURNER AND KRT PTY. LTD. DISCLAIM ALL WARRANTIES WITH REGARD
+   TO THIS SOFTWARE, INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+   FITNESS, IN NO EVENT SHALL KINGSLEY R. TURNER OR KRT PTY. LTD. BE
+   LIABLE FOR ANY SPECIAL, INDIRECT OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES
+   WHATSOEVER RESULTING FROM LOSS OF USE, DATA OR PROFITS, WHETHER IN AN
+   ACTION OF CONTRACT, OR OTHER ACTION, ARISING OUT OF OR IN CONNECTION
+   WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
+
+
+   If you do not agree with this licence, do not install News Harvest.
+
+
+   Software Requirements
+   ---------------------
+      - OS/2 Warp v4.0 (v3.x may work but is not tested - see Appendix 1)
+      - HPFS (or other OS/2 long-filename supported) partition
+      - TCP/IP
+
+   Hardware Requirements
+   ---------------------
+      - A Usenet News server
+      - Around 16MB of free RAM (after OS/2 is loaded)
+
+
+
+Installing News Harvest
+-----------------------
+Make a News Harvest Directory, e.g.:
+
+C:\>mkdir c:\NewsHarvest
+
+UNzip the content of the archive into the directory, e.g.:
+
+C:\NewsHarvest>unzip x:\tmp\nhv14.zip
+
+Run the install script INSTALL.CMD to build the WPS objects, e.g.:
+
+C:\NewsHarvest>install
+
+
+
+Getting Help
+------------
+   Documentation
+      - Click the 'Help' button on the main panel.
+
+   Service and Technical Support/Defect Reporting
+      - email: support@krt.com.au
+
+
+Trademarks
+----------
+"News Harvest" is a trademark of KRT Pty. Ltd.
+
+
+Customer Satisfaction
+---------------------
+Your satisfaction with News Harvest is important to us.  If you are not 
+totally satisfied with this product, please contact us at krt@krt.com.au.
+
+Tell us what is not meeting your expectations and why you are
+dissatisfied.  Provide your name, your organisations's name, and
+your email address so that we can contact you.  We will work with
+you to attempt to resolve your concerns.
+
+To contact us, use any of these:
+        o FAX in Australia: 02 49735478
+        o International FAX: +61 249735478
+        o eMAIL: krt@krt.com.au
+        o Internet: http://www.krt.com.au
+
+
+
+Appendix 1 - News Harvest under OS/2 Warp 3
+-------------------------------------------
+Our team can think of no reason why News Harvest should not work under
+OS/2 Warp 3 + fixpacks.  However KRT runs on a shoestring budget, and
+resources to test and develop on Warp 3 are simply not available.
+
+If you have a problem with News Harvest and OS/2 Warp 3, we will endeavour
+to rememdy the situation, but we do not have a running Warp 3 machine to
+perform testing on.  (Having given away our old Warp versions to needy 
+people).

@@ -1,0 +1,53 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "hostlist.h"
+
+DLGTEMPLATE ID_HOSTLIST_DIALOG PRELOAD MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "Host News Groups", ID_HOSTLIST_DIALOG, 35, 30, 342, 221, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    BEGIN
+        CONTAINER       ID_HOSTLIST_LIST, 7, 24, 190, 192, CCS_SINGLESEL | 
+                        CCS_AUTOPOSITION | CCS_READONLY |  CCS_MINIICONS |
+                        WS_GROUP
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "(never)", ID_HOSTLIST_REFRESH, 263, 193, 58, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Groups:", -1, 215, 180, 32, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Refreshed:", -1, 215, 193, 44, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "0", ID_HOSTLIST_NUMGROUPS, 264, 180, 27, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        DEFPUSHBUTTON   "Ok", DID_OK, 246, 6, 40, 14
+        PUSHBUTTON      "Cancel", DID_CANCEL, 292, 6, 40, 14
+        PUSHBUTTON      "Refresh", ID_HOSTLIST_B_REFRESH, 5, 6, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        GROUPBOX        "No Server", ID_HOSTLIST_HOSTGROUP, 209, 173, 123, 
+                        40
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Selected:", -1, 209, 156, 31, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", ID_HOSTLIST_FILTERSTRING, 211, 60, 119, 8, 
+                        ES_MARGIN
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Filter", ID_HOSTLIST_FILTER, 292, 42, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LISTBOX         ID_HOSTLIST_SELECTED, 209, 102, 123, 55, 
+                        LS_MULTIPLESEL | LS_EXTENDEDSEL
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00000000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Filter:", -1, 209, 70, 18, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Remove", ID_HOSTLIST_REMOVE, 292, 85, 40, 14
+        LTEXT           "", ID_HOSTLIST_SOFAR, 293, 180, 26, 8
+                        PRESPARAMS PP_FOREGROUNDCOLOR, 0x00C80000L
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

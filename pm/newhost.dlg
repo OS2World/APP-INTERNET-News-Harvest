@@ -1,0 +1,32 @@
+#ifndef OS2_INCLUDED
+   #include <os2.h>
+#endif
+
+#include "newhost.h"
+
+DLGTEMPLATE ID_HOST_DIALOG PRELOAD MOVEABLE DISCARDABLE
+BEGIN
+    DIALOG  "News Server Configuration", ID_HOST_DIALOG, 12, 119, 271, 74, 
+            WS_VISIBLE, FCF_SYSMENU | FCF_TITLEBAR
+            PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    BEGIN
+        ENTRYFIELD      "", ID_HOST_FIELD, 13, 49, 199, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Lookup", ID_HOST_B_LOOKUP, 223, 46, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", ID_HOST_USER, 36, 28, 68, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        ENTRYFIELD      "", ID_HOST_PASS, 151, 28, 61, 8, ES_MARGIN
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        DEFPUSHBUTTON   "Ok", DID_OK, 177, 5, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        PUSHBUTTON      "Cancel", DID_CANCEL, 223, 5, 40, 14
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Name or IP Address:", 6003, 11, 60, 88, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Login:", -1, 11, 27, 22, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+        LTEXT           "Password:", -1, 110, 27, 37, 8
+                        PRESPARAMS PP_FONTNAMESIZE, "8.Helv"
+    END
+END

@@ -1,0 +1,112 @@
+#makefile.gcc
+
+# Revisions	28 Jul 00 SHL - Release
+
+.SUFFIXES:
+.SUFFIXES: .rc .res .o .cpp
+
+CC	= gcc
+CFLAGS	= -Zmt -DOS2 -DANSI -DOS2PM  -DSOCKS -DSCOUG -I. -I.. -Ie:/emx/h -Id:/toolkit/h
+LINK	= gcc
+LFLAGS	= -Zmt -Zmap
+LIBS	= OS2386.LIB DDE4MBS.LIB tcp32dll.lib so32dll.lib libsock5.lib
+BASEOBJ = ..\decoder.o \
+	..\newsserver.o \
+	..\newsgroup.o \
+	..\header.o \
+	..\item.o \
+	..\filestat.o \
+	..\multipart.o \
+	..\part.o \
+	..\netscape.o \
+	..\xhdrpacket.o \
+	..\bincat.o \
+	..\mime.o \
+	..\obj_string.o
+OBJ	= nsdlg.o \
+	  newhost.o \
+	  container.o \
+	  config.o \
+	  ServerDefinition.o \
+	  GroupDefinition.o \
+	  newgroup.o \
+	  settings.o \
+	  hostlist.o \
+	  download.o \
+	  mimedlg.o \
+	  mimeset.o \
+          filelist.o \
+	  ledgend.o \
+	  pmtools.o \
+	  splash.o \
+	  help.o \
+          dlg_post.o \
+	  dlg_log.o \
+	  dlg_processfilter.o \
+	  dlg_out.o \
+	  DLG_multi.o \
+	  DLG_rego.o \
+          Dlg_Priority.o \
+	  dlg_socks.o \
+	  dlg_user.o \
+	  Class_Notebook.o \
+	  Dlg_Notebook.o \
+	  ..\strutils.o \
+	  ..\unlink.o \
+	  ..\log.o \
+	  ..\sleep.o
+
+ALLOBJ	= $(OBJ) $(BASEOBJ)
+
+.cpp.o:
+	$(CC) $(CFLAGS) -c $*.cpp
+
+.rc.res:
+	rc -r $*.rc
+
+all:	NHEmx.exe
+
+clean:
+	del *.o *.res *~ *.exe *.map 2> nul
+
+NHEmx.exe:	makefile $(OBJ) nsdlg.def nsdlg.res
+	gcc -o NHEmx @<<LINK.RSP
+$(ALLOBJ)
+$(LFLAGS)
+$(LIBS)
+NSDLG.DEF
+<<
+	emxbind -bp -rnsdlg.res /emx/bin/emxl NewHarvest
+
+# GenDlg Dependencies
+nsdlg.res: nsdlg.rc nsdlg.dlg ns_bann.bmp newgroup.dlg newhost.dlg settings.dlg
+nsdlg.o: nsdlg.cpp nsdlg.h threads.h
+newhost.o: newhost.cpp newhost.h hostdlg.h
+container.o: container.cpp container.h
+config.o: config.cpp config.h serverdefinition.h groupdefinition.h
+ServerDefinition.o: ServerDefinition.h ServerDefinition.cpp
+groupdefinition.o: groupdefinition.cpp groupdefinition.h
+newgroup.o: newgroup.cpp newgroup.h groupdlg.h
+settings.o:settings.h settings.cpp
+hostlist.o: hostlist.cpp hostlist.h hostlistdlg.h
+download.o: download.cpp download.h
+mimedlg.o: mimedlg.cpp mimedlg.h mime.h
+mimeset.o: mimeset.cpp mimeset.h
+filelist.o: filelist.cpp filelist.h
+ledgend.o: ledgend.cpp ledgend.h ledgenddlg.h ledgend.dlg
+pmtools.o: pmtools.cpp pmtools.h
+splash.o: splash.cpp splash.h splash.dlg splashdlg.h threads.h
+help.o: help.cpp help.h
+dlg_post.o: dlg_post.cpp post.h
+dlg_log.o: dlg_log.cpp dlg_log.h
+dlg_processfilter.o: dlg_processfilter.cpp filter.h
+dlg_out.o: dlg_out.cpp out.h
+DLG_multi.o: DLG_multi.cpp multi.h
+DLG_rego.o: DLG_rego.cpp rego.h
+Dlg_Priority.o: Dlg_Priority.cpp priority.h
+dlg_user.o: dlg_user.cpp user.h
+Class_Notebook.o: Class_Notebook.cpp class_notebook.hpp basic.hpp
+Dlg_Notebook.o: Dlg_Notebook.cpp basic.hpp
+dlg_socks.o: dlg_socks.cpp dlg_socks.h
+
+# The end
